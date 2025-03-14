@@ -1,4 +1,4 @@
-// DOM이 완전히 로드되었을 때 실행
+ // DOM이 완전히 로드되었을 때 실행
 document.addEventListener("DOMContentLoaded", () => {
     // 로그인 폼 요소 가져오기
     const form = document.querySelector("form");
@@ -75,6 +75,22 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             passwordInput.type = "password"; // 다시 비밀번호로 숨김
         }
+    });
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+    const submitButton = document.querySelector("input[type='submit']");
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        submitButton.value = "로그인 중...";
+        submitButton.disabled = true;
+
+        setTimeout(() => {
+            submitButton.value = "Login";
+            submitButton.disabled = false;
+            alert("로그인 성공! (예제)");
+        }, 2000);
     });
 });
 
