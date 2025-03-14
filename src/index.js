@@ -37,3 +37,45 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("로그인 성공!");
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    // 비밀번호 표시/숨김을 위한 아이콘(span 요소) 생성
+    const togglePassword = document.createElement("span");
+    togglePassword.innerText = "👁️"; // 눈 모양 이모지
+    togglePassword.style.cursor = "pointer"; // 클릭할 수 있도록 커서 스타일 변경
+
+    // "비밀번호 확인하기" 문구 생성
+    const passwordLabel = document.createElement("span");
+    passwordLabel.innerText = "비밀번호 확인하기"; // 문구 텍스트
+    passwordLabel.style.fontSize = "6px"; // 폰트 크기 조정
+    passwordLabel.style.color = "#fff"; // 색상 지정
+    passwordLabel.style.marginTop = "5px"; // 간격을 위한 마진 추가
+    passwordLabel.style.cursor = "pointer"; // 클릭할 수 있도록 커서 스타일 변경
+
+    // 비밀번호 입력 필드 가져오기
+    const passwordInput = document.querySelector("input[type='password']");
+
+    // 비밀번호 입력 필드의 부모 요소에 아이콘과 문구 추가
+    const wrapper = document.createElement("div");
+    wrapper.style.display = "flex";
+    wrapper.style.flexDirection = "column";
+    wrapper.style.alignItems = "center"; // 아이콘과 문구를 가운데 정렬
+
+    // 아이콘과 문구를 함께 래핑한 div에 추가
+    wrapper.appendChild(togglePassword);
+    wrapper.appendChild(passwordLabel);
+
+    // 비밀번호 입력 필드의 부모 요소에 추가 (기존 비밀번호 입력 필드 바로 아래에 삽입)
+    passwordInput.parentNode.appendChild(wrapper);
+
+    // 아이콘 클릭 시 비밀번호 표시/숨김 기능 토글
+    togglePassword.addEventListener("click", () => {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text"; // 비밀번호를 보이도록 변경
+        } else {
+            passwordInput.type = "password"; // 다시 비밀번호로 숨김
+        }
+    });
+});
+
+
