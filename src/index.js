@@ -1,5 +1,5 @@
  // DOM이 완전히 로드되었을 때 실행
-document.addEventListener("DOMContentLoaded", () => {
+ document.addEventListener("DOMContentLoaded", () => {
     // 로그인 폼 요소 가져오기
     const form = document.querySelector("form");
 
@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 이메일이 정규식과 일치하지 않으면 경고 메시지 출력 후 함수 종료
         if (!emailPattern.test(email)) {
-            alert("올바른 이메일을 입력하세요.");
             return;
         }
 
@@ -77,21 +76,39 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form");
     const submitButton = document.querySelector("input[type='submit']");
+    const emailInput = document.querySelector("input[type='text']");
+    const passwordInput = document.querySelector("input[type='password']");
 
     form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        submitButton.value = "로그인 중...";
-        submitButton.disabled = true;
+        event.preventDefault();  // 기본 제출 동작 방지
 
-        setTimeout(() => {
-            submitButton.value = "Login";
-            submitButton.disabled = false;
-            alert("로그인 성공! (예제)");
-        }, 2000);
+        // 입력된 이메일과 비밀번호 가져오기
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        // 이메일 형식 검증
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert("올바른 이메일을 입력하세요.");
+            return;
+        }
+
+        // 비밀번호 길이 확인
+        if (password.length < 6) {
+            alert("비밀번호는 최소 6자 이상이어야 합니다.");
+            return;
+        }
+
+
+        // 새 창 열기
+        window.open("dashboard.html", "_blank");  // 여기에 원하는 로컬 HTML 파일 경로를 입력
     });
 });
+
 
 
