@@ -1,4 +1,5 @@
  // DOM이 완전히 로드되었을 때 실행
+ //주석추가
  document.addEventListener("DOMContentLoaded", () => {
     // 로그인 폼 요소 가져오기
     const form = document.querySelector("form");
@@ -98,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        
+
         // 비밀번호 길이 확인
         if (password.length < 6) {
             alert("비밀번호는 최소 6자 이상이어야 합니다.");
